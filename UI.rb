@@ -1,18 +1,113 @@
 #PUT ALL FUNCTIONS ABOVE THIS
 
-puts "Hello! Welcome to Skynet Calculator (Beta). What would you like to do today?"
+def add(num1, num2)
+  puts num1 + num2
+end
+
+def subt(num1, num2)
+  puts num1 - num2
+end
+
+def mult(num1, num2)
+  puts num1 * num2
+end
+
+def div(num1, num2)
+  if num2 == 0
+    puts "undefined"
+  else
+    puts num1 / num2
+  end
+end
+
+def exp(num1, num2)
+  puts num1 ** num2
+end
+
+def mod(num1, num2)
+  puts num1 % num2
+end
+
+def factorial(number)
+  if number < 0
+    return "Undefined"
+  elsif number == 0
+    return 1
+  else
+    answer = 1
+    1.upto(number) do |no|
+      answer *= no
+    end
+    return answer
+  end
+end
+
+def graph(equation)
+  slope = equation[0...equation.index("x")]
+  if slope == ""
+    slope = "1"
+  end
+  slope = slope.to_i
+  graph = "
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+-----------------------------------------
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    
+                    |                    "
+  spot = 400
+  i = 0
+  while spot > 0
+    graph[spot + (2 * i)] = "#"
+    graph[spot + (2 * i) + 1] = "#"
+    spot -= (42 * slope)
+    i += 1
+  end
+  spot = 482
+  i = 0
+  while spot < graph.length
+    graph[spot - (2 * i)] = "#"
+    graph[spot - (2 * i) - 1] = "#"
+    spot += (42 * slope)
+    i += 1
+  end
+  return graph
+end
+
+def generate_tip(total, tip)
+  final = (total * (tip.to_f / 100))
+  tipp = (final*1000).round / 1000.0
+  return "You should tip $" + tipp.to_s
+end
+
+puts "Hello! Welcome to Yoda Calculator (Beta). What would you like to do today?"
 puts "Available functions are: "
 puts "quit - - add - - subtract - - multiply - - divide \n
-raise to a power - - take the modulus - - factorial \n
-find hypotenuse of triangle - - find area of regular polygon"#add later
+raise to a power - - take the modulus -- factorial\n
+graph - - tip" #add later
 input = gets.chomp.downcase
 
 loop do
   if input == "add"
     puts "Enter the first number you would like to add."
-    add1 = gets.chomp
+    add1 = gets.chomp.to_i
     puts "Enter the second number you would like to add."
-    add2 = gets.chomp
+    add2 = gets.chomp.to_i
     puts "The answer is #{add(add1,add2)}"
   elsif input == "subtract"
     puts "Enter the first number you would like to subtract from."
@@ -48,22 +143,23 @@ loop do
     puts "Enter your number."
     fact = gets.chomp
     puts "The answer is #{factorial(fact)}"
-  elsif input == "find hypotenuse of triangle"
-    puts "Enter the length of the first leg."
-    leg_a = gets.chomp
-    puts "Enter the length of the second leg."
-    leg_b = gets.chomp
-    puts "The answer is #{pythag(leg_a,leg_b)}"
-  elsif input == "find area of regular polygon"
-    puts "Enter the number of sides."
-    sidecount = gets.chomp
-    puts "Enter the length of each side."
-    sidelength = gets.chomp
-    puts "The answer is #{reg_poly(sidecount,sidelength)}"
+  elsif input == "tip"
+    puts "How much did you pay in total?"
+    total = gets.chomp.to_i
+    puts "What percentage would you like to tip? (Do not type %)"
+    tip = gets.chomp.to_i
+    puts generate_tip(total, tip)
+  elsif input == "graph"
+    puts "enter an equation in the form of mx"
+    multiple = gets.chomp
+    puts graph(multiple)
   elsif input == "quit"
     puts "Goodbye."
     break
   end
   puts "What else would you like to do?"
+  puts "quit - - add - - subtract - - multiply - - divide \n
+raise to a power - - take the modulus -- factorial\n
+graph - - tip"
   input = gets.chomp
 end
