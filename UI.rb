@@ -3,7 +3,8 @@
 puts "Hello! Welcome to Skynet Calculator (Beta). What would you like to do today?"
 puts "Available functions are: "
 puts "quit - - add - - subtract - - multiply - - divide \n
-raise to a power - - take the modulus -- factorial"#add later
+raise to a power - - take the modulus - - factorial \n
+find hypotenuse of triangle - - find area of regular polygon"#add later
 input = gets.chomp.downcase
 
 loop do
@@ -47,6 +48,18 @@ loop do
     puts "Enter your number."
     fact = gets.chomp
     puts "The answer is #{factorial(fact)}"
+  elsif input == "find hypotenuse of triangle"
+    puts "Enter the length of the first leg."
+    leg_a = gets.chomp
+    puts "Enter the length of the second leg."
+    leg_b = gets.chomp
+    puts "The answer is #{pythag(leg_a,leg_b)}"
+  elsif input == "find area of regular polygon"
+    puts "Enter the number of sides."
+    sidecount = gets.chomp
+    puts "Enter the length of each side."
+    sidelength = gets.chomp
+    puts "The answer is #{reg_poly(sidecount,sidelength)}"
   elsif input == "quit"
     puts "Goodbye."
     break
