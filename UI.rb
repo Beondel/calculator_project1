@@ -122,37 +122,37 @@ loop do
     puts "The answer is #{add(add1,add2)}"
   elsif input == "subtract"
     puts "Enter the first number you would like to subtract from."
-    subtract1 = gets.chomp
+    subtract1 = gets.chomp.to_i
     puts "Enter the number to be subtracted."
-    subtract2 = gets.chomp
+    subtract2 = gets.chomp.to_i
     puts "The answer is #{subt(subtract1,subtract2)}"
   elsif input == "multiply"
     puts "Enter the first number you would like to multiply."
-    multiply1 = gets.chomp
+    multiply1 = gets.chomp.to_i
     puts "Enter the second number you would like to multiply."
-    multiply2 = gets.chomp
+    multiply2 = gets.chomp.to_i
     puts "The answer is #{mult(multiply1,multiply2)}"
   elsif input == "divide"
     puts "Enter the number you would like to be divided."
-    divide1 = gets.chomp
+    divide1 = gets.chomp.to_i
     puts "Enter the number you would like to divide by."
-    divide2 = gets.chomp
+    divide2 = gets.chomp.to_i
     puts "The answer is #{div(divide1,divide2)}"
   elsif input == "raise to a power"
     puts "Enter the base."
-    exp1 = gets.chomp
+    exp1 = gets.chomp.to_i
     puts "Enter the power."
-    exp2 = gets.chomp
+    exp2 = gets.chomp.to_i
     puts "The answer is #{exp(exp1,exp2)}"
   elsif input == "take the modulus"
     puts "Enter your first number."
-    mod1 = gets.chomp
+    mod1 = gets.chomp.to_i
     puts "Enter the base."
-    mod2 = gets.chomp
+    mod2 = gets.chomp.to_i
     puts "The answer is #{mod(mod1,mod2)}"
   elsif input == "factorial"
     puts "Enter your number."
-    fact = gets.chomp
+    fact = gets.chomp.to_i
     puts "The answer is #{factorial(fact)}"
   elsif input == "tip"
     puts "How much did you pay in total?"
