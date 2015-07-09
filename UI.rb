@@ -46,8 +46,11 @@ def graph(equation)
   slope = equation[0...equation.index("x")]
   if slope == ""
     slope = "1"
+  elsif slope == "-"
+    slope = "-1"
   end
   slope = slope.to_i
+  puts slope
   graph = "
                     |                    
                     |                    
@@ -70,17 +73,25 @@ def graph(equation)
                     |                    
                     |                    
                     |                    "
+if slope > 0
   spot = 400
+else
+  spot = 484
+end
   i = 0
-  while spot > 0
+  while spot > 0 and spot < graph.length
     graph[spot + (2 * i)] = "#"
     graph[spot + (2 * i) + 1] = "#"
     spot -= (42 * slope)
     i += 1
   end
+if slope > 0
   spot = 482
+else
+  spot = 398
+end
   i = 0
-  while spot < graph.length
+  while spot > 0 and spot < graph.length
     graph[spot - (2 * i)] = "#"
     graph[spot - (2 * i) - 1] = "#"
     spot += (42 * slope)
