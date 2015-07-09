@@ -11,3 +11,7 @@ def factorial(number)
     return answer
   end
 end
+
+def pythag(leg1,leg2)
+  return hypot(leg1,leg2)
+end
